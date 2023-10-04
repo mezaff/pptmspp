@@ -22,7 +22,7 @@ class WaliSantriTagihanController extends Controller
     public function show($id)
     {
         $tagihan = Tagihan::waliSantri()->findOrFail($id);
-        // auth()->user()->unreadNotifications->where('id', request('id'))->first()->markAsRead();
+        auth()->user()->unreadNotifications->where('id', request('id'))->first()?->markAsRead();
         if ($tagihan->status == 'lunas') {
             $pembayaranId = $tagihan->pembayaran->last()->id;
             return redirect()->route('wali.pembayaran.show', $pembayaranId);
