@@ -44,7 +44,7 @@ class BankPondokController extends Controller
             'model' => new Model(),
             'method' => 'POST',
             'route' => $this->routePrefix . '.store',
-            'button' => 'SIMPAN',
+            'button' => 'TAMBAH REKENING',
             'title' => 'FORM DATA REKENING',
             'listBank' => \App\Models\Bank::pluck('nama_bank', 'id')
         ];

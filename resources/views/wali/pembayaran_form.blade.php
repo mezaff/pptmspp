@@ -33,12 +33,12 @@
 <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="card">
-            <h5 class="card-header">KONFIRMASI PEMBAYARAN</h5>
+            <h5 class="card-header fw-bold">KONFIRMASI PEMBAYARAN</h5>
             <div class="card-body">
                 {!! Form::model('model', ['route' => $route, 'method' => $method, 'files' => true]) !!}
                 {!! Form::hidden('tagihan_id', request('tagihan_id'), []) !!}
                 <div class="divider">
-                    <div class="divider-text"><i class="fa fa-info-circle"></i> INFORMASI REKENING PENGIRIM</div>
+                    <div class="divider-text fs-5"><i class="fa fa-info-circle"></i> INFORMASI REKENING PENGIRIM</div>
                 </div>
                 @if (count($listWaliBank) >= 1)
                 <div class="form-group mb-2" id="pilihan_bank">
@@ -98,7 +98,7 @@
                     </div>
                 </div>
                 <div class="divider">
-                    <div class="divider-text"><i class="fa fa-info-circle"></i> INFORMASI REKENING TUJUAN</div>
+                    <div class="divider-text fs-5"><i class="fa fa-info-circle"></i> INFORMASI REKENING TUJUAN</div>
                 </div>
                 <div class="informasi-bank-tujuan mb-5">
                     <div class="form-group mb-2">
@@ -134,7 +134,7 @@
                     @endif
                 </div>
                 <div class="divider">
-                    <div class="divider-text"><i class="fa fa-info-circle"></i> INFORMASI PEMBAYARAN</div>
+                    <div class="divider-text fs-5"><i class="fa fa-info-circle"></i> INFORMASI PEMBAYARAN</div>
                 </div>
                 <div class="informasi-pembayaran">
                     <div class="form-group mb-2">
@@ -157,7 +157,7 @@
                         {!! Form::file('bukti_bayar', ['class' => 'form-control', 'accept' => 'image/*']) !!}
                         <span class="text-danger">{{ $errors->first('bukti_bayar') }}</span>
                     </div>
-                    {!! Form::submit('SIMPAN', ['class' => 'btn btn-primary']) !!}
+                    {!! Form::submit('BAYAR', ['class' => 'btn btn-primary']) !!}
                 </div>
                 {!! Form::close() !!}
             </div>

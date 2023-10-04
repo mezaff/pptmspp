@@ -18,7 +18,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <a href="{{ route($routePrefix . '.create') }}" class="btn btn-primary mb-2">Tambah Data</a>
+                        <a href="{{ route($routePrefix . '.create') }}" class="btn btn-primary mb-2">Tambah Santri</a>
                         <a href="#" class="btn btn-warning mb-2 ms-2" id="btn-div">Import Dengan Excel</a>
                     </div>
                     <div class="col-md-6">

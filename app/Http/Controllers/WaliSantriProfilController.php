@@ -28,7 +28,7 @@ class WaliSantriProfilController extends Controller
             'model' => \App\Models\User::findOrFail(Auth::user()->id),
             'method' => 'POST',
             'route' => 'wali.profil.store',
-            'button' => 'UPDATE',
+            'button' => 'UBAH',
             'title' => 'FORM PROFIL'
         ];
         return view('wali.profil_form', $data);

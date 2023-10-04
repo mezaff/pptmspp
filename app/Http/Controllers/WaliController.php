@@ -25,7 +25,7 @@ class WaliController extends Controller
                 ->latest()
                 ->paginate(settings()->get('app_pagination', '50')),
             'routePrefix' => $this->routePrefix,
-            'title' => 'DATA WALI SANTRI'
+            'title' => 'DATA AKUN WALI SANTRI'
         ]);
     }
 
@@ -40,8 +40,8 @@ class WaliController extends Controller
             'model' => new Model(),
             'method' => 'POST',
             'route' => $this->routePrefix . '.store',
-            'button' => 'SIMPAN',
-            'title' => 'FORM DATA WALI SANTRI'
+            'button' => 'BUAT AKUN',
+            'title' => 'FORM AKUN WALI SANTRI'
         ];
         return view('operator.' . $this->viewCreate, $data);
     }
@@ -65,7 +65,7 @@ class WaliController extends Controller
         $requestData['nohp_verified_at'] = now();
         $requestData['akses'] = 'wali';
         Model::create($requestData);
-        flash('Data berhasil disimpan')->success();
+        flash('Akun berhasil disimpan')->success();
         return redirect()->route('wali.index');
     }
 
@@ -80,7 +80,7 @@ class WaliController extends Controller
         return view('operator.' . $this->viewٍShow, [
             'santri' => \App\Models\Santri::pluck('nama', 'id'),
             'model' => Model::with('santri')->wali()->where('id', $id)->firstOrFail(),
-            'title' => 'DETAIL DATA WALI SANTRI'
+            'title' => 'DETAIL AKUN WALI SANTRI'
         ]);
     }
 
@@ -96,8 +96,8 @@ class WaliController extends Controller
             'model' => Model::findOrFail($id),
             'method' => 'PUT',
             'route' => [$this->routePrefix . '.update', $id],
-            'button' => 'UPDATE',
-            'title' => 'FORM DATA WALI SANTRI'
+            'button' => 'UBAH',
+            'title' => 'FORM AKUN WALI SANTRI'
         ];
         return view('operator.' . $this->viewEdit, $data);
     }
@@ -126,7 +126,7 @@ class WaliController extends Controller
         }
         $model->fill($requestData);
         $model->save();
-        flash('Data berhasil diubah')->success();
+        flash('Akun berhasil diubah')->success();
         return redirect()->route('wali.index');
     }
 
@@ -140,7 +140,7 @@ class WaliController extends Controller
     {
         $model = Model::where('akses', 'wali')->findOrFail($id);
         $model->delete($id);
-        flash('Data berhasil dihapus')->success();
+        flash('Akun berhasil dihapus')->success();
         return back();
     }
 }

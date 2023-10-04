@@ -57,7 +57,7 @@ class WaliSantriPembayaranController extends Controller
     {
 
         if ($request->wali_bank_id == '' && $request->nomor_rekening == '') {
-            flash()->addError('Silahkan pilih bank pengirim');
+            flash('Silahkan pilih bank pengirim')->error();
             return back();
         }
         if ($request->nama_rekening != '' && $request->nomor_rekening != '') {
@@ -91,7 +91,7 @@ class WaliSantriPembayaranController extends Controller
             ->where('tagihan_id', $request->tagihan_id)
             ->first();
         if ($validasiPembayaran != null) {
-            flash()->addError('Data pembayaran ini sudah ada dan akan segera dikonfirmasi oleh operator.');
+            flash('Data pembayaran ini sudah ada dan akan segera dikonfirmasi oleh operator.')->error();
             return back();
         }
 
@@ -127,15 +127,15 @@ class WaliSantriPembayaranController extends Controller
                 DB::commit();
             } catch (\Throwable $th) {
                 DB::rollback();
-                flash()->addError('Gagal melakukan pembayaran' + $th->getMessage());
+                flash('Gagal melakukan pembayaran' + $th->getMessage())->error();
                 return back();
             }
         } else {
-            flash()->addError('Jumlah pembayaran tidak boleh kurang dari total tagihan');
+            flash('Jumlah pembayaran tidak boleh kurang dari total tagihan')->error();
             return back();
         }
 
-        flash()->addSuccess('Pembayaran berhasil disimpan dan akan segera dikonfirmasi oleh operator');
+        flash('Pembayaran berhasil dan akan segera dikonfirmasi oleh operator')->success();
         return back();
     }
 
@@ -143,12 +143,12 @@ class WaliSantriPembayaranController extends Controller
     {
         $pembayaran = Pembayaran::findOrFail($id);
         if ($pembayaran->tanggal_konfirmasi != null) {
-            flash()->addError('Pembayaran tidak bisa dibatalkan karena sudah dikonfirmasi');
+            flash('Pembayaran tidak bisa dibatalkan karena sudah dikonfirmasi')->error();
             return back();
         }
         \Storage::delete($pembayaran->bukti_bayar);
         $pembayaran->delete();
-        flash()->addSuccess('Pembayaran berhasil dibatalkan');
+        flash('Pembayaran berhasil dibatalkan')->success();
         return redirect()->route('wali.pembayaran.index');
     }
 }

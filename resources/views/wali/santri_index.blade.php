@@ -4,7 +4,7 @@
 <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="card">
-            <h5 class="card-header">DATA SANTRI</h5>
+            <h5 class="card-header fw-bold">DATA SANTRI</h5>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="{{ config('app.table_style') }}">

@@ -7,7 +7,7 @@
             <div class="d-flex align-items-end row">
                 <div class="col-sm-7">
                     <div class="card-body">
-                        <h5 class="card-title text-primary">Selamat Datang, {{ auth()->user()->name}}</h5>
+                        <h5 class="card-title text-primary text-capitalize">Selamat Datang, {{ auth()->user()->name}}</h5>
                         <p class="mb-4">
                             Kamu mendapat <span class="fw-bold">{{ auth()->user()->unreadNotifications->count() }}</span> informasi pembayaran yang belum dikonfirmasi. Klik tombol di bawah untuk melihat informasi pembayaran.
                         </p>

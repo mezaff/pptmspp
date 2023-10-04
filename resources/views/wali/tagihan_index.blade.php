@@ -4,7 +4,7 @@
 <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="card">
-            <h5 class="card-header">DATA TAGIHAN</h5>
+            <h5 class="card-header fw-bold">DATA TAGIHAN</h5>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="{{ config('app.table_style') }}">
@@ -25,7 +25,7 @@
                                 <td class="text-center">{{ $loop->iteration }}</td>
                                 <td class="text-capitalize">{{ $item->santri->nama }}</td>
                                 <td class="text-center">{{ $item->santri->kelas }}</td>
-                                <td class="text-center">{{ $item->jenis }}</td>
+                                <td class="text-center text-uppercase">{{ $item->jenis }}</td>
                                 <td>{{ $item->tanggal_tagihan->translatedFormat('F Y') }}</td>
                                 <td class="text-center">
                                     @if ($item->pembayaran->count() >= 1)

@@ -40,8 +40,8 @@ class UserController extends Controller
             'model' => new Model(),
             'method' => 'POST',
             'route' => $this->routePrefix . '.store',
-            'button' => 'SIMPAN',
-            'title' => 'FORM DATA USER'
+            'button' => 'BUAT AKUN',
+            'title' => 'FORM AKUN USER'
         ];
         return view('operator.' . $this->viewCreate, $data);
     }
@@ -65,7 +65,7 @@ class UserController extends Controller
         $requestData['email_verified_at'] = now();
         $requestData['nohp_verified_at'] = now();
         Model::create($requestData);
-        flash('Data berhasil disimpan')->success();
+        flash('Akun berhasil dibuat')->success();
         return redirect()->route('user.index');
     }
 
@@ -92,8 +92,8 @@ class UserController extends Controller
             'model' => Model::findOrFail($id),
             'method' => 'PUT',
             'route' => [$this->routePrefix . '.update', $id],
-            'button' => 'UPDATE',
-            'title' => 'FORM DATA USER'
+            'button' => 'UBAH',
+            'title' => 'FORM AKUN USER'
         ];
         return view('operator.' . $this->viewEdit, $data);
     }
@@ -123,7 +123,7 @@ class UserController extends Controller
         }
         $model->fill($requestData);
         $model->save();
-        flash('Data berhasil diubah')->success();
+        flash('Data akun berhasil diubah')->success();
         return redirect()->route('user.index');
     }
 
@@ -136,12 +136,12 @@ class UserController extends Controller
     public function destroy($id)
     {
         $model = Model::findOrFail($id);
-        if ($model->email == 'operator@operator.com') {
-            flash('Data tidak bisa dihapus')->error();
+        if ($model->email == 'mezafuwandhana@gmail.com') {
+            flash('Akun ini tidak bisa dihapus')->error();
             return back();
         }
         $model->delete();
-        flash('Data berhasil dihapus')->success();
+        flash('Akun berhasil dihapus')->success();
         return back();
     }
 }

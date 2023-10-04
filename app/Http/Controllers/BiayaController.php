@@ -50,8 +50,8 @@ class BiayaController extends Controller
             'model' => new Model(),
             'method' => 'POST',
             'route' => $this->routePrefix . '.store',
-            'button' => 'SIMPAN',
-            'title' => 'FORM DATA BIAYA',
+            'button' => 'TAMBAH',
+            'title' => 'FORM TAMBAH BIAYA',
         ];
         return view('operator.' . $this->viewCreate, $data);
     }
@@ -65,7 +65,7 @@ class BiayaController extends Controller
     public function store(StoreBiayaRequest $request)
     {
         Model::create($request->validated());
-        flash('Data berhasil disimpan')->success();
+        flash('Biaya berhasil ditambahkan')->success();
         return redirect()->route('biaya.index');
     }
 
@@ -95,8 +95,8 @@ class BiayaController extends Controller
             'model' => Model::findOrFail($id),
             'method' => 'PUT',
             'route' => [$this->routePrefix . '.update', $id],
-            'button' => 'UPDATE',
-            'title' => 'FORM DATA BIAYA',
+            'button' => 'UBAH',
+            'title' => 'FORM UBAH BIAYA',
         ];
         return view('operator.' . $this->viewEdit, $data);
     }
@@ -113,7 +113,7 @@ class BiayaController extends Controller
         $model = Model::findOrFail($id);
         $model->fill($request->validated());
         $model->save();
-        flash('Data berhasil diubah')->success();
+        flash('Biaya berhasil diubah')->success();
         return redirect()->route('biaya.index');
     }
 
@@ -128,17 +128,17 @@ class BiayaController extends Controller
         $model = Model::findOrFail($id);
         //validasi ke children
         if ($model->children->count() >= 1) {
-            flash('Data tidak bisa dihapus karena masih memiliki item biaya. Hapus item biaya terlebih dahulu')->error();
+            flash('Biaya tidak bisa dihapus karena masih memiliki item biaya. Hapus item biaya terlebih dahulu')->error();
             return back();
         }
         //validasi relasi ke data santri
         if ($model->santri->count() >= 1) {
-            flash('Data tidak bisa dihapus karena masih memiliki item biaya')->error();
+            flash('Biaya tidak bisa dihapus karena masih memiliki item biaya')->error();
             return back();
         }
 
         $model->delete($id);
-        Flash('Data berhasil dihapus')->success();
+        Flash('Biaya berhasil dihapus')->success();
         return back();
     }
 
@@ -146,11 +146,11 @@ class BiayaController extends Controller
     {
         $model = Model::findOrFail($id);
         if ($model->parent->santri->count() >= 1) {
-            flash('Data gagal dihapus karena masih berkaitan dengan data lain')->error();
+            flash('Biaya gagal dihapus karena masih berkaitan dengan data lain')->error();
             return back();
         }
         $model->delete($id);
-        Flash('Data berhasil dihapus')->success();
+        Flash('Biaya berhasil dihapus')->success();
         return back();
     }
 }

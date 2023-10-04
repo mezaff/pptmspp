@@ -30,7 +30,7 @@
                     'admin' => 'Admin Pondok'
                     ],
                     null,
-                    ['class' => 'form-control', 'placeholder' => '--Pilih Hak Akses']) !!}
+                    ['class' => 'form-control', 'placeholder' => '--Pilih Hak Akses--']) !!}
                     <span class="text-danger">{{ $errors->first('akses')}}</span>
                 </div>
                 @endif

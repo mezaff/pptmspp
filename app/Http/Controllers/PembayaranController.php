@@ -83,7 +83,7 @@ class PembayaranController extends Controller
         if ($wali != null) {
             $wali->notify(new PembayaranKonfirmasiNotification($pembayaran));
         }
-        flash('Pembayaran berhasil disimpan')->success();
+        flash('Pembayaran berhasil dan sudah otomatis terkonfirmasi.')->success();
         return back();
     }
 

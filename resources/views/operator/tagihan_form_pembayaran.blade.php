@@ -12,6 +12,6 @@
         {!! Form::text('jumlah_dibayar', $tagihan->total_tagihan, ['class' => 'form-control rupiah']) !!}
         <span class="text-danger">{{ $errors->first('jumlah_dibayar') }}</span>
     </div>
-    {!! Form::submit('SIMPAN', ['class' => 'btn btn-primary mt-1 mb-n2']) !!}
+    {!! Form::submit('BAYAR', ['class' => 'btn btn-primary mt-1 mb-n2']) !!}
     {!! Form::close() !!}
 </div>

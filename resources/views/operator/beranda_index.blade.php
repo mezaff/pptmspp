@@ -7,7 +7,7 @@
             <div class="d-flex align-items-end row">
                 <div class="col-sm-12">
                     <div class="card-body">
-                        <h5 class="card-title text-primary">Selamat Datang, {{ auth()->user()->name}}</h5>
+                        <h5 class="card-title text-primary text-capitalize">Selamat Datang, {{ auth()->user()->name}}</h5>
                         <p class="mb-1">
                             Kamu mendapat <span class="fw-bold">{{ auth()->user()->unreadNotifications->count() }}</span> informasi pembayaran yang
                             belum dikonfirmasi.
@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                         </div>
-                        <span>Total Sudah Bayar</span>
+                        <span class="fw-semibold d-block mb-1">Total Sudah Bayar</span>
                         <h3 class="card-title text-nowrap mb-1"><span class="text-success">{{ $totalSantriSudahBayar }}</span> Santri</h3>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
                                 </div>
                             </div>
                         </div>
-                        <span>Total Saldo</span>
+                        <span class="fw-semibold d-block mb-1">Total Saldo</span>
                         <h3 class="card-title text-nowrap mb-1 text-succes">{{ formatRupiah($totalPembayaran) }}</h3>
                     </div>
                 </div>
@@ -116,7 +116,7 @@
         <div class="card h-100">
             <div class="card-header d-flex align-items-center justify-content-between pb-0">
                 <div class="card-title mb-0">
-                    <h5 class="m-0 me-2">Tagihan {{ $bulanTeks }} {{ $tahun }}</h5>
+                    <h5 class="m-0 me-2 fw-bold">Tagihan {{ $bulanTeks }} {{ $tahun }}</h5>
                     <small class="text-muted">{{ date('d F Y H:i:s') }}</small>
                 </div>
 
@@ -127,7 +127,7 @@
                         <h4 class="mb-1">
                             {{ $tagihanSudahBayar->count() }}/{{ $tagihanBelumBayar->count() }}
                         </h4>
-                        <span>Total Tagihan {{ $totalTagihan }}</span>
+                        <span>Total Tagihan : {{ $totalTagihan }}</span>
                     </div>
                     {{-- {{ $tagihanChart->container() }} --}}
                 </div>
@@ -161,7 +161,7 @@
     <div class="col-md-6 col-lg-4 order-2 mb-4">
         <div class="card h-100">
             <div class="card-header d-flex align-items-center justify-content-between">
-                <h5 class="card-title m-0 me-2">Pembayaran Belum Dikonfirmasi</h5>
+                <h5 class="card-title m-0 me-2 fw-bold">Pembayaran Belum Dikonfirmasi</h5>
             </div>
             <div class="card-body">
                 <ul class="p-0 m-0">
@@ -175,7 +175,7 @@
                         <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
                                 <small class="text-muted d-block mb-1">{{ $item->tanggal_bayar->diffForHumans() }}</small>
-                                <h6 class="mb-0">{{ $item->tagihan->santri->nama }}</h6>
+                                <h6 class="mb-0 text-capitalize">{{ $item->tagihan->santri->nama }}</h6>
                             </div>
                             <div class="user-progress d-flex align-items-center gap-1">
                                 <h6 class="mb-0">
@@ -194,16 +194,8 @@
     <div class="col-md-6 col-lg-4 order-2">
         <div class="card h-100">
             <div class="card-header d-flex align-items-center justify-content-between">
-                <h5 class="card-title m-0 me-2">Tagihan Belum Dibayar</h5>
+                <h5 class="card-title m-0 me-2 fw-bold">Tagihan Belum Dibayar</h5>
                 {{ $tagihanBelumBayar->count() }}/{{ $totalTagihan }}
-                <div class="dropdown">
-                    <button class="btn p-0" type="button" id="transactionID" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="bx bx-dots-vertical-rounded"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="transactionID">
-                        <a class="dropdown-item" href="javascript:void(0);">Detail Data</a>
-                    </div>
-                </div>
             </div>
             <div class="card-body">
                 <ul class="p-0 m-0">
@@ -217,7 +209,7 @@
                                 <small class="text-muted d-block mb-1">
                                     {{ $item->tanggal_tagihan->translatedFormat('F Y') }}
                                 </small>
-                                <h6 class="mb-0">{{ $item->santri->nama }}</h6>
+                                <h6 class="mb-0 text-capitalize">{{ $item->santri->nama }}</h6>
                             </div>
                             <div class="user-progress d-flex align-items-center gap-1">
                                 <h6 class="mb-0">

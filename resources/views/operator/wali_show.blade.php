@@ -38,7 +38,7 @@
                         {!! Form::select('santri_id', $santri, null, ['class' => 'form-control select2', 'placeholder' => '-Pilih Data Anak-']) !!}
                         <span class="text-danger">{{ $errors->first('santri_id')}}</span>
                     </div>
-                    {!! Form::submit('SIMPAN', ['class' => 'btn btn-primary']) !!}
+                    {!! Form::submit('TAMBAH', ['class' => 'btn btn-primary']) !!}
                     {!! Form::close() !!}
                     <h5 class="mt-4 fw-bold">DATA ANAK</h5>
                     <div class="row">

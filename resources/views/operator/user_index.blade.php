@@ -6,7 +6,7 @@
         <div class="card">
             <h5 class="card-header fw-bold">{{ $title }}</h5>
             <div class="card-body">
-                <a href="{{ route($routePrefix . '.create') }}" class="btn btn-primary mb-2">Tambah Data</a>
+                <a href="{{ route($routePrefix . '.create') }}" class="btn btn-primary mb-2">Tambah Akun</a>
                 <div class="table-responsive">
                     <table class="{{ config('app.table_style') }}">
                         <thead class="{{ config('app.thead_style') }}">

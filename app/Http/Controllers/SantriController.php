@@ -53,7 +53,7 @@ class SantriController extends Controller
             'model' => new Model(),
             'method' => 'POST',
             'route' => $this->routePrefix . '.store',
-            'button' => 'SIMPAN',
+            'button' => 'TAMBAH',
             'title' => 'FORM DATA SANTRI',
             'wali' => User::where('akses', 'wali')->pluck('name', 'id')
         ];
@@ -73,7 +73,7 @@ class SantriController extends Controller
             $requestData['wali_status'] = 'ok';
         }
         Model::create($requestData);
-        flash('Data berhasil disimpan')->success();
+        flash('Data santri berhasil ditambahkan')->success();
         return redirect()->route('santri.index');
     }
 
@@ -104,7 +104,7 @@ class SantriController extends Controller
             'model' => Model::findOrFail($id),
             'method' => 'PUT',
             'route' => [$this->routePrefix . '.update', $id],
-            'button' => 'UPDATE',
+            'button' => 'UBAH',
             'title' => 'FORM DATA SANTRI',
             'wali' => User::where('akses', 'wali')->pluck('name', 'id')
         ];
@@ -127,7 +127,7 @@ class SantriController extends Controller
         }
         $model->fill($requestData);
         $model->save();
-        flash('Data berhasil diubah')->success();
+        flash('Data santri berhasil diubah')->success();
         return redirect()->route('santri.index');
     }
 
@@ -141,11 +141,11 @@ class SantriController extends Controller
     {
         $santri = Model::findOrFail($id);
         if ($santri->tagihan->count() >= 1) {
-            Flash('Data tidak bisa dihapus karena masih memiliki relasi data tagihan')->error();
+            flash('Data santri tidak bisa dihapus karena masih memiliki relasi dengan data tagihan, hapus tagihan milik santri tersebut terlebih dahulu.')->error();
             return back();
         }
         $santri->delete($id);
-        flash('Data berhasil dihapus')->success();
+        flash('Data santri berhasil dihapus')->success();
         return back();
     }
 }

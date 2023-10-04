@@ -301,7 +301,7 @@
                             {!! implode('', $errors->all('<div>:message</div>')) !!}
                         </div>
                         @endif
-                        @include('flash::message')s
+                        @include('flash::message')
                         @yield('content')
                     </div>
                     <!-- / Content -->

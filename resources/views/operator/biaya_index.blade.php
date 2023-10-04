@@ -8,7 +8,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <a href="{{ route($routePrefix . '.create') }}" class="btn btn-primary mb-2">Tambah Data</a>
+                        <a href="{{ route($routePrefix . '.create') }}" class="btn btn-primary mb-2">Tambah Biaya</a>
                     </div>
                     <div class="col-md-6">
                         {!! Form::open(['route' => $routePrefix . '.index', 'method' => 'GET']) !!}

@@ -70,8 +70,8 @@ class TagihanController extends Controller
             'model' => new Model(),
             'method' => 'POST',
             'route' => $this->routePrefix . '.store',
-            'button' => 'SIMPAN',
-            'title' => 'FORM DATA TAGIHAN',
+            'button' => 'BUAT',
+            'title' => 'FORM PEMBUATAN TAGIHAN',
             'santriList' => Santri::pluck('nama', 'id'),
         ];
         return view('operator.' . $this->viewCreate, $data);
@@ -150,7 +150,7 @@ class TagihanController extends Controller
         TagihanDetail::where('tagihan_id', $id)->delete();
         Tagihan::destroy($id);
         Pembayaran::where('tagihan_id', $id)->delete();
-        flash('Tagihan berhasih dihapus')->success();
+        flash('Tagihan berhasil dihapus')->success();
         return back();
     }
 }
