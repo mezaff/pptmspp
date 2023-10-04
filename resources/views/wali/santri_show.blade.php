@@ -30,17 +30,6 @@
                                 <td>{{ $model->kelas}}</td>
                             </tr>
                             <tr>
-                                <th>Kartu SPP</th>
-                                <td>
-                                    <a href="{{ route('kartuspp.index', [
-                                    'santri_id' => $model->id,
-                                    'tahun' => date('Y'),
-                                ]) }}" target="blank">
-                                        <i class="fa fa-file-pdf"></i> Cetak Kartu SPP
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
                                 <th>Dibuat Oleh</th>
                                 <td class="text-capitalize">{{ $model->user->name}}</td>
                             </tr>

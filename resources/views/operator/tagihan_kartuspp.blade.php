@@ -2,14 +2,7 @@
     <div class="card-body mt-n4">
         <div class="row">
             <div class="col-md-6 text-start">
-                <h5 class="card-header fw-bold">KARTU SPP</h5>
-            </div>
-            <div class="col-md-6 text-end">
-                <a href="{{ route('kartuspp.index', [
-                    'santri_id' => $santri->id,
-                    'tahun' => getTahunAjaran(),
-                ]) }}" class="btn btn-primary btn-sm mt-3" target="blank"><i class="fa fa-print"> </i> Cetak Kartu SPP
-                </a>
+                <h5 class="card-header fw-bold mb-n3">KARTU SPP</h5>
             </div>
         </div>
         <table class="{{ config('app.table_style') }}">
