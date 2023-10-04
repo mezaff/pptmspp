@@ -52,11 +52,9 @@ class TagihanLainStepController extends Controller
         if (request()->filled('cari')) {
             //cari data santri berdasarkan query di url
             $query->when(request()->filled('nama'), function ($query) {
-                $query->where('nama', 'like', '%' . request()->cari . '%');
+                $query->where('nama', 'like', '%' . request('nama') . '%');
             })->when(request()->filled('kelas'), function ($query) {
                 $query->where('kelas', request('kelas'));
-            })->when(request()->filled('jenis_spp'), function ($query) {
-                $query->where('jenis_spp', request('jenis_spp'));
             });
         }
         $data['santri'] = $query->get()->each(function ($q) {

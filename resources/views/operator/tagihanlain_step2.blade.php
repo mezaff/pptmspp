@@ -28,27 +28,15 @@
             <div class="g-3">
                 <div class="form-group mb-2">
                     <label for="nama">Nama</label>
-                    {!! Form::text('nama', request('nama'), ['class' => 'form-control', 'placeholder' => 'Masukkan Nama', 'autofocus']) !!}
+                    {!! Form::text('nama', request('nama'), ['class' => 'form-control', 'placeholder' => 'Cari berdasarkan nama', 'autofocus']) !!}
                     <span class="text-danger">{{ $errors->first('nama')}}</span>
                 </div>
                 <div class="form-group mb-2">
                     <label for="kelas">Kelas</label>
                     {!! Form::select('kelas', getKelas(),
                     request('kelas'),
-                    ['class' => 'form-control', 'placeholder' => '-Pilih Kelas-']) !!}
+                    ['class' => 'form-control', 'placeholder' => 'Cari berdasarkan kelas']) !!}
                     <span class="text-danger">{{ $errors->first('kelas')}}</span>
-                </div>
-                <div class="form-group mb-2">
-                    <label for="jenis_spp">Jenis SPP</label>
-                    {!! Form::select('jenis_spp',[
-                    'SPP 1' => 'SPP 1',
-                    'SPP 2' => 'SPP 2',
-                    'SPP 3' => 'SPP 3',
-                    'SPP 4' => 'SPP 4',
-                    ],
-                    request('jenis_spp'),
-                    ['class' => 'form-control', 'placeholder' => '-Pilih Jenis SPP-']) !!}
-                    <span class="text-danger">{{ $errors->first('jenis_spp')}}</span>
                 </div>
             </div>
             <input type="submit" name="cari" value="Cari Data" class="btn btn-primary">
@@ -113,7 +101,7 @@
             </div>
             {!! Form::close() !!}
             @endif
-            <div class="alert alert-secondary" role="alert">
+            <div class="alert alert-primary" role="alert">
                 Silahkan pilih santri yang akan ditagih, klik Pilih, jika sudah selesai klik Lanjut.
             </div>
             <div class="col-12 d-flex justify-content-between">

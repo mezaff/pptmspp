@@ -31,7 +31,7 @@
                     'placeholder' => 'Pilih Nama Biaya'
                     ]) !!}
                 </div>
-                <div class="alert alert-secondary" role="alert">
+                <div class="alert alert-primary" role="alert">
                     Jika anda menambahkan biaya baru, jangan lupa klik tombol berikut untuk menampilkan biaya yang baru anda buat. <a href=""> <i class="fa fa-arrows-rotate"></i></a>
                 </div>
                 <div class="col-12 d-flex justify-content-between">
