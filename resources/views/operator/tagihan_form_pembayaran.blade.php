@@ -1,4 +1,4 @@
-<h5 class="card-header">FORM PEMBAYARAN</h5>
+<h5 class="card-header fw-bold">FORM PEMBAYARAN</h5>
 <div class="card-body mt-n3">
     {!! Form::model($model, ['route' => 'pembayaran.store', 'method' => 'POST']) !!}
     {!! Form::hidden('tagihan_id', $tagihan->id, []) !!}

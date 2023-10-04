@@ -19,7 +19,6 @@
                     <th class="text-center text-white">Bulan</th>
                     <th class="text-center text-white">jml Tagihan</th>
                     <th class="text-center text-white">Tgl Bayar</th>
-                    <th class="text-center text-white">Paraf</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,7 +28,6 @@
                     <td>{{ $item['bulan'].' '.$item['tahun'] }}</td>
                     <td class="text-end">{{ formatRupiah($item['total_tagihan']) }}</td>
                     <td>{{ $item['tanggal_bayar'] }}</td>
-                    <td>&nbsp;</td>
                 </tr>
                 @endforeach
             </tbody>
