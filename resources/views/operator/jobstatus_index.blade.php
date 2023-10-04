@@ -70,8 +70,8 @@
                                 <th class="text-center text-white">Modul</th>
                                 <th class="text-center text-white">Progress</th>
                                 <th class="text-center text-white">Status</th>
-                                <td>Tanggal Buat</td>
-                                <td>Deskripsi</td>
+                                <th class="text-center text-white">Tanggal Buat</td>
+                                <th class="text-center text-white">Deskripsi</th>
                             </tr>
                         </thead>
                         <tbody>
