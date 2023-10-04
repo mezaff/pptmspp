@@ -36,7 +36,7 @@ class SettingAppController extends Controller
     {
         $dataSettings = $request->except('_token');
         settings()->set($dataSettings);
-        flash('Pengaturan berhasil diubah');
+        flash('Pengaturan berhasil diubah')->success();
         return back();
     }
 

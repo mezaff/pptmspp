@@ -144,13 +144,13 @@ class TagihanController extends Controller
     {
         $tagihan = Tagihan::findOrFail($id);
         if ($tagihan->status == 'lunas') {
-            flash()->addError('Tagihan tidak bisa dihapus karena sudah Lunas');
+            flash('Tagihan tidak bisa dihapus karena sudah Lunas')->error();
             return back();
         }
         TagihanDetail::where('tagihan_id', $id)->delete();
         Tagihan::destroy($id);
         Pembayaran::where('tagihan_id', $id)->delete();
-        flash()->addSuccess('Tagihan berhasih dihapus');
+        flash('Tagihan berhasih dihapus')->success();
         return back();
     }
 }

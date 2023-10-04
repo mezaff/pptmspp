@@ -65,7 +65,7 @@ class BankPondokController extends Controller
         $requestData['kode'] = $bank->sandi_bank;
         $requestData['nama_bank'] = $bank->nama_bank;
         Model::create($requestData);
-        flash('Data berhasil disimpan');
+        flash('Data berhasil disimpan')->success();
         return redirect()->route('bankpondok.index');
     }
 
@@ -113,7 +113,7 @@ class BankPondokController extends Controller
         $model = Model::findOrFail($id);
         $model->fill($request->validated());
         $model->save();
-        flash('Data berhasil diubah');
+        flash('Data berhasil diubah')->success();
         return redirect()->route('biaya.index');
     }
 
@@ -127,7 +127,7 @@ class BankPondokController extends Controller
     {
         $model = Model::findOrFail($id);
         $model->delete($id);
-        Flash('Data berhasil dihapus');
+        Flash('Data berhasil dihapus')->success();
         return back();
     }
 }

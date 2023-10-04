@@ -42,7 +42,7 @@ class SettingPjController extends Controller
             $dataSettings['pj_ttd'] = $request->file('pj_ttd')->store('public/ttd');
         }
         settings()->set($dataSettings);
-        flash('Pengaturan berhasil diubah');
+        flash('Pengaturan berhasil diubah')->success();
         return back();
     }
 

@@ -65,7 +65,7 @@ class WaliController extends Controller
         $requestData['nohp_verified_at'] = now();
         $requestData['akses'] = 'wali';
         Model::create($requestData);
-        flash('Data berhasil disimpan');
+        flash('Data berhasil disimpan')->success();
         return redirect()->route('wali.index');
     }
 
@@ -126,7 +126,7 @@ class WaliController extends Controller
         }
         $model->fill($requestData);
         $model->save();
-        flash()->addSuccess('Data berhasil diubah');
+        flash('Data berhasil diubah')->success();
         return redirect()->route('wali.index');
     }
 
@@ -140,7 +140,7 @@ class WaliController extends Controller
     {
         $model = Model::where('akses', 'wali')->findOrFail($id);
         $model->delete($id);
-        Flash('Data berhasil dihapus');
+        flash('Data berhasil dihapus')->success();
         return back();
     }
 }

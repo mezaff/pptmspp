@@ -16,7 +16,7 @@ class WaliSantriController extends Controller
         $santri->wali_id = $request->wali_id;
         $santri->wali_status = 'ok';
         $santri->save();
-        flash()->addSuccess('Data berhasil ditambahkan');
+        flash('Data berhasil ditambahkan')->success();
         return back();
     }
 
@@ -26,7 +26,7 @@ class WaliSantriController extends Controller
         $santri->wali_id = null;
         $santri->wali_status = null;
         $santri->save();
-        flash()->addSuccess('Data berhasil dihapus');
+        flash('Data berhasil dihapus')->success();
         return back();
     }
 }

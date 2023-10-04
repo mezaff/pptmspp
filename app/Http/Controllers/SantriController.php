@@ -73,7 +73,7 @@ class SantriController extends Controller
             $requestData['wali_status'] = 'ok';
         }
         Model::create($requestData);
-        flash('Data berhasil disimpan');
+        flash('Data berhasil disimpan')->success();
         return redirect()->route('santri.index');
     }
 
@@ -127,7 +127,7 @@ class SantriController extends Controller
         }
         $model->fill($requestData);
         $model->save();
-        flash('Data berhasil diubah');
+        flash('Data berhasil diubah')->success();
         return redirect()->route('santri.index');
     }
 
@@ -145,7 +145,7 @@ class SantriController extends Controller
             return back();
         }
         $santri->delete($id);
-        Flash('Data berhasil dihapus');
+        flash('Data berhasil dihapus')->success();
         return back();
     }
 }

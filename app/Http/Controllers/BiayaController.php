@@ -65,7 +65,7 @@ class BiayaController extends Controller
     public function store(StoreBiayaRequest $request)
     {
         Model::create($request->validated());
-        flash()->addSuccess('Data berhasil disimpan');
+        flash('Data berhasil disimpan')->success();
         return redirect()->route('biaya.index');
     }
 
@@ -113,7 +113,7 @@ class BiayaController extends Controller
         $model = Model::findOrFail($id);
         $model->fill($request->validated());
         $model->save();
-        flash()->addSuccess('Data berhasil diubah');
+        flash('Data berhasil diubah')->success();
         return redirect()->route('biaya.index');
     }
 
@@ -128,17 +128,17 @@ class BiayaController extends Controller
         $model = Model::findOrFail($id);
         //validasi ke children
         if ($model->children->count() >= 1) {
-            flash()->addError('Data tidak bisa dihapus karena masih memiliki item biaya. Hapus item biaya terlebih dahulu');
+            flash('Data tidak bisa dihapus karena masih memiliki item biaya. Hapus item biaya terlebih dahulu')->error();
             return back();
         }
         //validasi relasi ke data santri
         if ($model->santri->count() >= 1) {
-            flash()->addError('Data tidak bisa dihapus karena masih memiliki item biaya');
+            flash('Data tidak bisa dihapus karena masih memiliki item biaya')->error();
             return back();
         }
 
         $model->delete($id);
-        Flash()->addSuccess('Data berhasil dihapus');
+        Flash('Data berhasil dihapus')->success();
         return back();
     }
 
@@ -146,11 +146,11 @@ class BiayaController extends Controller
     {
         $model = Model::findOrFail($id);
         if ($model->parent->santri->count() >= 1) {
-            flash()->addError('Data gagal dihapus karena masih berkaitan dengan data lain');
+            flash('Data gagal dihapus karena masih berkaitan dengan data lain')->error();
             return back();
         }
         $model->delete($id);
-        Flash()->addSuccess('Data berhasil dihapus');
+        Flash('Data berhasil dihapus')->success();
         return back();
     }
 }

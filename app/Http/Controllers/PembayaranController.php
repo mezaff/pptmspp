@@ -83,7 +83,7 @@ class PembayaranController extends Controller
         if ($wali != null) {
             $wali->notify(new PembayaranKonfirmasiNotification($pembayaran));
         }
-        flash()->addSuccess('Pembayaran berhasil disimpan');
+        flash('Pembayaran berhasil disimpan')->success();
         return back();
     }
 
@@ -128,7 +128,7 @@ class PembayaranController extends Controller
         $pembayaran->tanggal_konfirmasi = now();
         $pembayaran->user_id = auth()->user()->id;
         $pembayaran->save();
-        flash()->addSuccess('Data pembayaran berhasil dikonfirmasi');
+        flash('Data pembayaran berhasil dikonfirmasi')->success();
         return back();
     }
 
@@ -141,7 +141,7 @@ class PembayaranController extends Controller
     public function destroy(Pembayaran $pembayaran)
     {
         $pembayaran->delete();
-        flash()->addSuccess('Data berhasil dihapus');
+        flash('Data berhasil dihapus')->success();
         return back();
     }
 }

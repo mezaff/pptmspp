@@ -65,7 +65,7 @@ class UserController extends Controller
         $requestData['email_verified_at'] = now();
         $requestData['nohp_verified_at'] = now();
         Model::create($requestData);
-        flash('Data berhasil disimpan');
+        flash('Data berhasil disimpan')->success();
         return redirect()->route('user.index');
     }
 
@@ -123,7 +123,7 @@ class UserController extends Controller
         }
         $model->fill($requestData);
         $model->save();
-        flash('Data berhasil diubah');
+        flash('Data berhasil diubah')->success();
         return redirect()->route('user.index');
     }
 
@@ -141,7 +141,7 @@ class UserController extends Controller
             return back();
         }
         $model->delete();
-        Flash('Data berhasil dihapus');
+        flash('Data berhasil dihapus')->success();
         return back();
     }
 }
