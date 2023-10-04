@@ -12,8 +12,8 @@
                 </a>
             </div>
         </div>
-        <table class="table table-bordered mt-n3">
-            <thead class="table-dark">
+        <table class="{{ config('app.table_style') }}">
+            <thead class="{{ config('app.thead_style') }}">
                 <tr>
                     <th class="text-center text-white">No</th>
                     <th class="text-center text-white">Bulan</th>
