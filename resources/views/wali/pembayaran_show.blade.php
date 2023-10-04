@@ -110,7 +110,7 @@
                     </table>
                     @if ($model->tanggal_konfirmasi == null)
                     <div class="alert alert-warning mt-2" role="alert">
-                        <strong>MENUNGGU KONFIRMASI</strong>
+                        <strong class="fs-5">MENUNGGU KONFIRMASI</strong>
                     </div>
                     {!! Form::open([
                     'route' => ['wali.pembayaran.destroy', $model->id],
@@ -123,7 +123,7 @@
                     {!! Form::close() !!}
                     @else
                     <div class="alert alert-primary mt-2" role="alert">
-                        <h4 class="text-black fw-bold">TAGIHAN SUDAH DIKONFIRMASI</h4>
+                        <strong class="fs-5">PEMBAYARAN SUDAH DIKONFIRMASI</strong>
                     </div>
                     <div class="btn btn-primary">
                         <a href="{{ route('kwitansipembayaran.show', $model->id) }}" target="blank" class="text-white">

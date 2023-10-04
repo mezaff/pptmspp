@@ -21,7 +21,7 @@
                             @forelse ($models as $item)
                             <tr>
                                 <td class="text-center">{{ $loop->iteration }}</td>
-                                <td class="text-center">{{ $item->nama }}</td>
+                                <td class="text-capitalize">{{ $item->nama }}</td>
                                 <td class="text-center">{{ $item->nis }}</td>
                                 <td class="text-center">{{ $item->kelas }}</td>
                                 <td class="text-center">

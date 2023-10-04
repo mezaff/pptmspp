@@ -128,7 +128,7 @@ class PembayaranController extends Controller
         $pembayaran->tanggal_konfirmasi = now();
         $pembayaran->user_id = auth()->user()->id;
         $pembayaran->save();
-        flash('Data pembayaran berhasil dikonfirmasi')->success();
+        flash('Pembayaran berhasil dikonfirmasi')->success();
         return back();
     }
 
