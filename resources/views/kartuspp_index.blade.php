@@ -178,9 +178,9 @@
                         <table>
                             <tr>
                                 <td>
-                                    Nama : <span class="nama">{{ $santri->nama }}</span><br />
-                                    Kelas : {{ $santri->kelas }}<br />
-                                    Jenis SPP : {{ $santri->jenis_spp }}
+                                    Nama &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="nama">{{ $santri->nama }}</span><br />
+                                    Kelas &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $santri->kelas }}<br />
+                                    Nama Wali : <span class="nama">{{ $santri->wali->name }}</span>
                                 </td>
                             </tr>
                         </table>
