@@ -1,5 +1,32 @@
 @extends('layouts.app_sneat_wali', ['title' => 'Bayar Tagihan'])
+@section('js')
+<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ env('MIDTRANS_CLIENT_KEY') }}"></script>
+<script>
+    $(document).ready(function() {
+        $("#pay-button").click(function(e) {
+            var orderId = $("#order_id").val();
+            var total = $("#total").val();
+            var url = "/wali/walipayment?tagihan_id={{ $tagihan->id }}";
+            $.getJSON(url
+                , function(data, textStatus, jqXHR) {
+                    snap.pay(data.snapToken, {
+                        onSuccess: function(result) {
+                            window.location.href = window.location.href + "?check=true";
+                        }
+                        , onPending: function(result) {
+                            window.location.href = window.location.href + "?check=true";
+                        }
+                        , onError: function(result) {
+                            window.location.href = window.location.href + "?check=true";
+                        }
+                    });
+                }
+            );
+        });
+    });
 
+</script>
+@endsection
 @section('content')
 <div class="row justify-content-center">
     <div class="col-md-12">
@@ -27,7 +54,7 @@
                         <table class="mb-3">
                             <tr>
                                 <td width="55%" class="fw-bold">ID Tagihan</td>
-                                <td class="fw-bold"> : PPTM46{{ $tagihan->id }}{{ $tagihan->tanggal_tagihan->format('dY') }}</td>
+                                <td class="fw-bold"> : {{ $tagihan->getNomorTagihan() }}</td>
                             </tr>
                             <tr>
                                 <td class="fw-bold">Tanggal Tagihan</td>
@@ -70,10 +97,22 @@
                         </tfoot>
                     </table>
                 </div>
-                <div class="alert alert-secondary mt-2" role="alert" style="color: black">
-                    Pembayaran bisa dilakukan secara LANGSUNG melalui Operator Pondok atau secara ONLINE dengan cara transfer ke rekening bank pondok berikut :
+                <div class="alert alert-primary mt-2" role="alert" style="color: black">
+                    <h5 class="text-primary fw-bold">METODE PEMBAYARAN</h5>
+                    <ul>
+                        <li>
+                            <strong>MANUAL dengan cara datang langsung ke kantor pondok.</strong>
+                        </li>
+                        <li>
+                            <strong>TRANSFER dengan cara kilik tombol "BAYAR" dibawah.</strong>
+                            <ul>
+                                <li class="list-unstyled">Nb: Metode TRANSFER akan dikenakan biaya admin sebesar Rp. 5000,-.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <button class="btn btn-primary mt-2" id="pay-button">Bayar</button>
                 </div>
-                <div class="row">
+                {{-- <div class="row">
                     @foreach ($bankPondok as $itemBank)
                     <div class="col-md-6">
                         <div class="alert alert-primary" role="alert">
@@ -82,27 +121,27 @@
                                     <tr>
                                         <td width="30%">Nama Bank </td>
                                         <td>: {{ $itemBank->nama_bank }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Nomor Rekening </td>
-                                        <td>: {{ $itemBank->nomor_rekening }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Atas Nama </td>
-                                        <td>: {{ $itemBank->nama_rekening }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <a href="{{ route('wali.pembayaran.create', [
+                </tr>
+                <tr>
+                    <td>Nomor Rekening </td>
+                    <td>: {{ $itemBank->nomor_rekening }}</td>
+                </tr>
+                <tr>
+                    <td>Atas Nama </td>
+                    <td>: {{ $itemBank->nama_rekening }}</td>
+                </tr>
+                </tbody>
+                </table>
+                <a href="{{ route('wali.pembayaran.create', [
                                 'tagihan_id' => $tagihan->id,
                                 'bank_pondok_id' => $itemBank->id,
                             ]) }}" class="btn btn-primary">Bayar Sekarang</a>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
             </div>
         </div>
-    </div>
+        @endforeach
+    </div> --}}
+</div>
+</div>
+</div>
 </div>
 @endsection

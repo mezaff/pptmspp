@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BankPondok;
 use App\Models\Tagihan;
+use Http;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,6 +28,16 @@ class WaliSantriTagihanController extends Controller
             $pembayaranId = $tagihan->pembayaran->last()->id;
             return redirect()->route('wali.pembayaran.show', $pembayaranId);
         }
+        if (request('check')) {
+            $response = Http::withHeaders([
+                'Accept' => 'application/json',
+                'Content-Type' => 'application/json',
+                'Authorization' => 'Basic' . base64_encode(env('MIDTRANS_SERVER_KEY') . ':')
+            ])->get('https://api.sandbox.midtrans.com/v2/' . $tagihan->getNomorTagihan() . '/status');
+            $responseJson = $response->json();
+            dd($responseJson);
+        }
+
         $data['bankPondok'] = BankPondok::all();
         $data['tagihan'] = $tagihan;
         $data['santri'] = $tagihan->santri;

@@ -25,6 +25,7 @@
         "laravel/ui": "^4.2",
         "laravelcollective/html": "dev-fix-lang",
         "maatwebsite/excel": "^3.1",
+        "midtrans/midtrans-php": "^2.5",
         "nicolaslopezj/searchable": "^1.13",
         "qcod/laravel-settings": "^1.2",
         "spatie/laravel-activitylog": "^4.7",

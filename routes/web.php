@@ -25,6 +25,7 @@ use App\Http\Controllers\LaporanPembayaranController;
 use App\Http\Controllers\LaporanRekapPembayaran;
 use App\Http\Controllers\LaporanTagihanController;
 use App\Http\Controllers\LogActivityController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SantriImportController;
 use App\Http\Controllers\SettingAppController;
 use App\Http\Controllers\SettingController;
@@ -37,6 +38,7 @@ use App\Http\Controllers\TagihanLainStep4Controller;
 use App\Http\Controllers\TagihanLainStepController;
 use App\Http\Controllers\TagihanUpdateLunas;
 use App\Http\Controllers\WaliNotifikasiController;
+use App\Http\Controllers\WaliPaymentController;
 use App\Http\Controllers\WaliSantriInvoiceController;
 use App\Http\Controllers\WaliSantriPembayaranController;
 use App\Http\Controllers\WaliSantriProfilController;
@@ -112,6 +114,7 @@ Route::prefix('wali')->middleware(['auth', 'auth.wali', 'verified'])->name('wali
     //ini route khusus untuk wali-murid
     Route::get('beranda', [BerandaWaliController::class, 'index'])->name('beranda');
     Route::resource('santri', WaliSantriSantriController::class);
+    Route::resource('walipayment', WaliPaymentController::class);
     Route::resource('tagihan', WaliSantriTagihanController::class);
     Route::resource('pembayaran', WaliSantriPembayaranController::class);
     Route::resource('profil', WaliSantriProfilController::class);
@@ -125,6 +128,8 @@ Route::resource('invoice', InvoiceController::class)->middleware('auth');
 Route::prefix('admin')->middleware(['auth', 'auth.admin'])->group(function () {
     //ini route khusus untuk admin
 });
+
+Route::resource('payment', PaymentController::class);
 
 Route::get('logout', function () {
     Auth::logout();

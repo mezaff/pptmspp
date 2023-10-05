@@ -161,4 +161,9 @@ class Tagihan extends Model
     {
         return $this->belongsTo(Biaya::class);
     }
+
+    public function getNomorTagihan()
+    {
+        return "PPTM/SPP/" . $this->id;
+    }
 }
