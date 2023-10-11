@@ -110,7 +110,7 @@
                             </ul>
                         </li>
                     </ul>
-                    <button class="btn btn-primary mt-2" id="pay-button">Bayar</button>
+                    <button id="pay-button" class="btn btn-primary mt-2">Bayar</button>
                 </div>
                 {{-- <div class="row">
                     @foreach ($bankPondok as $itemBank)

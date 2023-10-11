@@ -16,7 +16,7 @@ class WaliPaymentController extends Controller
 
     private function createOrder($id)
     {
-        $biayaAdmin = 5000;
+        $biayaAdmin = 4000;
         $tagihan = Tagihan::waliSantri()->findOrFail($id);
         $totalTagihan = $tagihan->totalTagihan + $biayaAdmin;
 
