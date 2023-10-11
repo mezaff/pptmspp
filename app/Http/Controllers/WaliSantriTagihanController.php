@@ -7,7 +7,6 @@ use App\Models\Tagihan;
 use Http;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Midtrans\Transaction;
 
 class WaliSantriTagihanController extends Controller
 {

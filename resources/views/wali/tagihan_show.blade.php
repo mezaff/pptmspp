@@ -13,12 +13,6 @@
                         onSuccess: function(result) {
                             window.location.href = window.location.href + "?check=true";
                         }
-                        , onPending: function(result) {
-                            window.location.href = window.location.href + "?check=true";
-                        }
-                        , onError: function(result) {
-                            window.location.href = window.location.href + "?check=true";
-                        }
                     });
                 }
             );
