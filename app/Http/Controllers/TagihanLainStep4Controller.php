@@ -23,7 +23,7 @@ class TagihanLainStep4Controller extends Controller
         } else if (session('tagihan_untuk') == 'pilihan') {
             $santriId = session('data_santri')->pluck('id');
         } else {
-            flash()->addError('Tidak ada data santri yang akan ditagih');
+            flash('Tidak ada data santri yang akan ditagih')->success();
             return back();
         }
         $tanggalTagihan = $request->tanggal_tagihan;
@@ -35,7 +35,7 @@ class TagihanLainStep4Controller extends Controller
         $process = new ProcessTagihanLainStore($requestData);
         $process->handle();
         // $this->dispatch($process);
-        flash()->addSuccess('Tagihan berhasil dibuat');
+        flash('Tagihan berhasil dibuat')->success();
         return redirect()->route('jobstatus.index');
     }
 }

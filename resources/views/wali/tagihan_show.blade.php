@@ -1,26 +1,4 @@
 @extends('layouts.app_sneat_wali', ['title' => 'Bayar Tagihan'])
-@section('js')
-<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ env('MIDTRANS_CLIENT_KEY') }}"></script>
-<script>
-    $(document).ready(function() {
-        $("#pay-button").click(function(e) {
-            var orderId = $("#order_id").val();
-            var total = $("#total").val();
-            var url = "/wali/walipayment?tagihan_id={{ $tagihan->id }}";
-            $.getJSON(url
-                , function(data, textStatus, jqXHR) {
-                    snap.pay(data.snapToken, {
-                        onSuccess: function(result) {
-                            window.location.href = window.location.href + "?check=true";
-                        }
-                    });
-                }
-            );
-        });
-    });
-
-</script>
-@endsection
 @section('content')
 <div class="row justify-content-center">
     <div class="col-md-12">
@@ -86,7 +64,7 @@
                         <tfoot>
                             <tr>
                                 <th colspan="2" class="fs-6 text-center">Total Pembayaran</th>
-                                <th class="fs-6 text-end">{{ formatRupiah($tagihan->tagihanDetails->sum('jumlah_biaya')) }}</th>
+                                <th class="fs-6 text-end">{{ formatRupiah($tagihan->totalTagihan) }}</th>
                             </tr>
                         </tfoot>
                     </table>
@@ -106,7 +84,7 @@
                     </ul>
                     <button id="pay-button" class="btn btn-primary mt-2">Bayar</button>
                 </div>
-                {{-- <div class="row">
+                <div class="row">
                     @foreach ($bankPondok as $itemBank)
                     <div class="col-md-6">
                         <div class="alert alert-primary" role="alert">
@@ -115,27 +93,27 @@
                                     <tr>
                                         <td width="30%">Nama Bank </td>
                                         <td>: {{ $itemBank->nama_bank }}</td>
-                </tr>
-                <tr>
-                    <td>Nomor Rekening </td>
-                    <td>: {{ $itemBank->nomor_rekening }}</td>
-                </tr>
-                <tr>
-                    <td>Atas Nama </td>
-                    <td>: {{ $itemBank->nama_rekening }}</td>
-                </tr>
-                </tbody>
-                </table>
-                <a href="{{ route('wali.pembayaran.create', [
+                                    </tr>
+                                    <tr>
+                                        <td>Nomor Rekening </td>
+                                        <td>: {{ $itemBank->nomor_rekening }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Atas Nama </td>
+                                        <td>: {{ $itemBank->nama_rekening }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a href="{{ route('wali.pembayaran.create', [
                                 'tagihan_id' => $tagihan->id,
                                 'bank_pondok_id' => $itemBank->id,
                             ]) }}" class="btn btn-primary">Bayar Sekarang</a>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
             </div>
         </div>
-        @endforeach
-    </div> --}}
-</div>
-</div>
-</div>
+    </div>
 </div>
 @endsection

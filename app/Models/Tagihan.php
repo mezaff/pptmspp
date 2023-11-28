@@ -164,6 +164,6 @@ class Tagihan extends Model
 
     public function getNomorTagihan()
     {
-        return "PPTM/SPP/" . $this->id;
+        return "PPTM/PAY/" . $this->id;
     }
 }

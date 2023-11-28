@@ -116,7 +116,6 @@ Route::prefix('wali')->middleware(['auth', 'auth.wali', 'verified'])->name('wali
     //ini route khusus untuk wali-murid
     Route::get('beranda', [BerandaWaliController::class, 'index'])->name('beranda');
     Route::resource('santri', WaliSantriSantriController::class);
-    Route::resource('walipayment', WaliPaymentController::class);
     Route::resource('tagihan', WaliSantriTagihanController::class);
     Route::resource('pembayaran', WaliSantriPembayaranController::class);
     Route::resource('profil', WaliSantriProfilController::class);
@@ -131,7 +130,7 @@ Route::prefix('admin')->middleware(['auth', 'auth.admin'])->group(function () {
     //ini route khusus untuk admin
 });
 
-Route::resource('payment', PaymentController::class);
+
 
 Route::get('logout', function () {
     Auth::logout();
